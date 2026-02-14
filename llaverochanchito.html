@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Llavero Chanchito | AAA Tejidos</title>
+    <style>
+        :root { 
+            --primario: #9e7e63; --texto: #333; --azul-ml: #3483fa; 
+            --yape: #74226C; --mercadopago: #009ee3;
+        }
+        
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            background-image: url('fondo.jpg'); 
+            background-attachment: fixed; background-size: cover; background-position: center;
+            color: var(--texto); margin: 0; padding: 0;
+        }
+
+        /* HEADER */
+        header { background: #fff5eb; padding: 15px 20px; border-bottom: 1px solid #ddd; display: flex; align-items: center; gap: 15px; }
+        .logo-text { font-weight: bold; color: var(--primario); font-size: 1.2rem; text-decoration: none; }
+        .btn-volver { text-decoration: none; font-size: 1.2rem; color: #333; }
+
+        /* GRILLA PRINCIPAL */
+        .main-container {
+            max-width: 1100px; margin: 20px auto; background: white; padding: 30px;
+            border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: grid; grid-template-columns: 60% 35%; gap: 5%;
+        }
+
+        /* COLUMNA IZQUIERDA */
+        .col-izq { display: flex; flex-direction: column; }
+        .galeria { display: flex; gap: 15px; margin-bottom: 30px; }
+        .miniaturas { display: flex; flex-direction: column; gap: 10px; }
+        .miniaturas img { width: 60px; height: 60px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; }
+        .miniaturas img:hover { border-color: var(--azul-ml); }
+        .img-principal-container { flex: 1; text-align: center; }
+        .img-principal { width: 100%; max-width: 500px; border-radius: 5px; cursor: zoom-in; border: 1px solid #eee; }
+
+        /* COLUMNA DERECHA (STICKY) */
+        .col-der { position: relative; }
+        .buy-box {
+            border: 1px solid #eee; padding: 20px; border-radius: 8px;
+            position: sticky; top: 20px; background: white;
+        }
+        h1 { font-size: 22px; margin: 0 0 10px 0; color: #333; line-height: 1.3; }
+        .precio { font-size: 36px; font-weight: 300; color: #333; margin-bottom: 20px; }
+        
+        /* BOTONES */
+        .btn-full { width: 100%; display: block; padding: 14px; border-radius: 6px; text-align: center; font-weight: bold; cursor: pointer; border: none; font-size: 16px; margin-bottom: 10px; text-decoration: none; box-sizing: border-box; transition: 0.2s;}
+        .btn-mp { background-color: var(--azul-ml); color: white; }
+        .btn-yape { background: linear-gradient(45deg, var(--yape), #00d3d6); color: white; }
+        .btn-wsp { background-color: rgba(65, 184, 131, 0.1); color: #00a650; }
+        
+        /* MODALES */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); }
+        .modal-content { margin: auto; display: block; max-width: 90%; max-height: 90vh; position: relative; top: 50%; transform: translateY(-50%); border-radius: 10px; }
+        .caja-pago { background: white; padding: 20px; text-align: center; border-radius: 15px; max-width: 350px; margin: 0 auto; position: relative; top: 50%; transform: translateY(-50%); }
+        .qr-img { width: 100%; max-width: 250px; margin: 10px 0; }
+        .close { position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer; color: #333; }
+
+        @media (max-width: 768px) {
+            .main-container { grid-template-columns: 1fr; padding: 15px; }
+            .galeria { flex-direction: column-reverse; }
+            .miniaturas { flex-direction: row; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="btn-volver">⬅</a>
+        <a href="index.html" class="logo-text">AAA Tejidos</a>
+    </header>
+
+    <div class="main-container">
+        <div class="col-izq">
+            <div class="galeria">
+                <div class="miniaturas">
+                    <img src="llaverochanchito1.jpg" onclick="cambiarFoto('llaverochanchito1.jpg')">
+                    <img src="llaverochanchito2.jpg" onclick="cambiarFoto('llaverochanchito2.jpg')">
+                    <img src="llaverochanchito3.jpg" onclick="cambiarFoto('llaverochanchito3.jpg')">
+                </div>
+                <div class="img-principal-container">
+                    <img src="llaverochanchito1.jpg" class="img-principal" id="mainImage" onclick="abrirZoom()">
+                </div>
+            </div>
+
+            <h3>Descripción</h3>
+            <p>Llavero de cerdito tejido a crochet con acabado premium. Un detalle tierno y duradero.</p>
+            <ul>
+                <li><strong>Material:</strong> Hilo de algodón 100%</li>
+                <li><strong>Color:</strong> Rosado suave</li>
+                <li><strong>Uso:</strong> Llavero o colgante de mochila</li>
+            </ul>
+        </div>
+
+        <div class="col-der">
+            <div class="buy-box">
+                <span style="color:#666; font-size:14px;">Nuevo | Llaveros</span>
+                <h1>Llavero Chanchito Tejido</h1>
+                <div class="precio">S/ 12.00</div>
+                <p style="color:#00a650; font-weight:bold; font-size:14px;">🚚 Envíos a todo el Perú</p>
+
+                <a href="#" class="btn-full btn-mp">💳 Comprar ahora</a>
+                
+                <button class="btn-full btn-yape" onclick="abrirQR()">📱 Pagar con Yape</button>
+                
+                <a href="https://api.whatsapp.com/send?phone=51962318592&text=Hola,%20me%20encanta%20el%20Llavero%20de%20Chanchito,%20quiero%20uno" class="btn-full btn-wsp">
+                    ✅ Pedir por WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalZoom" class="modal" onclick="this.style.display='none'">
+        <span class="close" style="color:white; top:20px; right:30px;">&times;</span>
+        <img class="modal-content" id="imgZoom">
+    </div>
+
+    <div id="modalQR" class="modal" onclick="this.style.display='none'">
+        <div class="caja-pago" onclick="event.stopPropagation()">
+            <span class="close" onclick="document.getElementById('modalQR').style.display='none'">&times;</span>
+            <h3>Escanea para pagar</h3>
+            <p>Monto: <strong>S/ 12.00</strong></p>
+            <img src="yapeqr.jpeg" class="qr-img" alt="QR Yape">
+            <p><small>Envía captura al WhatsApp.</small></p>
+        </div>
+    </div>
+
+    <script>
+        function cambiarFoto(src) { document.getElementById("mainImage").src = src; }
+        function abrirZoom() { 
+            document.getElementById("modalZoom").style.display = "block"; 
+            document.getElementById("imgZoom").src = document.getElementById("mainImage").src; 
+        }
+        function abrirQR() { document.getElementById("modalQR").style.display = "block"; }
+    </script>
+</body>
+</html>

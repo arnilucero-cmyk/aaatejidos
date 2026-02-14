@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAA Tejidos | Amor en cada punto</title>
+    <style>
+        :root { --primario: #9e7e63; --texto: #4a4a4a; }
+        
+        body { 
+            font-family: 'Helvetica Neue', Arial, sans-serif; 
+            /* FONDO ACTUALIZADO A .jpg */
+            background-image: url('fondo.jpg'); 
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            color: var(--texto); 
+            margin: 0; 
+            padding: 0; /* Padding 0 para la portada */
+            line-height: 1.6; 
+        }
+
+        /* LOGO */
+        .logo-flotante {
+            position: absolute; top: 15px; left: 15px; width: 80px; height: 80px;
+            border-radius: 50%; border: 3px solid var(--primario);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 200; background-color: black;
+        }
+        @media (max-width: 600px) {
+            .logo-flotante { position: relative; display: block; margin: 10px auto; top: 0; left: 0; }
+        }
+
+        header { text-align: center; padding: 60px 20px 40px 20px; background: rgba(255, 255, 255, 0.9); position: relative; }
+        h1 { color: var(--primario); font-size: 3rem; margin-bottom: 10px; margin-top: 10px; }
+        
+        .historia { max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: #666; font-style: italic; padding: 20px; background-color: white; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .destacado { color: var(--primario); font-weight: bold; }
+
+        nav { background-color: var(--primario); padding: 15px; text-align: center; position: sticky; top: 0; z-index: 100; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-size: 1.1rem; font-weight: bold; }
+
+        .seccion { padding: 50px 20px; max-width: 1000px; margin: 0 auto; }
+        .titulo-seccion { text-align: center; color: var(--primario); font-size: 2rem; margin-bottom: 30px; border-bottom: 2px solid #ddd; padding-bottom: 10px; background-color: rgba(255,255,255,0.8); border-radius: 10px; }
+
+        .grid-productos { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        .producto {
+            background: white; border-radius: 15px; overflow: hidden; width: 300px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; padding-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .producto:hover { transform: translateY(-5px); }
+        .producto img { width: 100%; height: 300px; object-fit: cover; cursor: pointer; }
+        .producto h3 { margin: 15px 0 5px 0; }
+        .precio { color: var(--primario); font-weight: bold; font-size: 1.2rem; }
+
+        .btn-pedir {
+            display: inline-block; background-color: var(--primario); color: white;
+            padding: 10px 20px; border-radius: 20px; text-decoration: none; margin-top: 10px;
+        }
+        
+        footer { background-color: #333; color: white; text-align: center; padding: 20px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.jpeg" alt="Logo AAA Tejidos" class="logo-flotante">
+
+        <h1>AAA Tejidos</h1>
+        <div class="historia">
+            <p>"AAA" no son solo letras. Representan mi fuerza: <span class="destacado">mis tres hijas</span>.</p>
+            <p>Me dedico a tejer sueños con hilo y amor.</p>
+        </div>
+    </header>
+
+    <nav>
+        <a href="#amigurumis">Amigurumis</a>
+        <a href="#llaveros">Llaveros</a>
+        <a href="#ropa">Ropa</a>
+    </nav>
+
+    <section id="amigurumis" class="seccion">
+        <h2 class="titulo-seccion">Amigurumis</h2>
+        <div class="grid-productos">
+            <div class="producto">
+                <a href="osito.html" target="_blank">
+                    <img src="foto1.jpeg" alt="Osito Clásico">
+                </a>
+                <h3>Osito Clásico</h3>
+                <p class="precio">S/ 85.00</p>
+                <a href="osito.html" target="_blank" class="btn-pedir">Ver detalles y comprar</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="llaveros" class="seccion">
+        <h2 class="titulo-seccion">Llaveros</h2>
+        <div class="grid-productos">
+            <div class="producto">
+                <section id="llaveros" class="seccion">
+        <h2 class="titulo-seccion">Llaveros</h2>
+        <div class="grid-productos">
+            
+            <section id="llaveros" class="seccion">
+        <h2 class="titulo-seccion">Llaveros</h2>
+        <div class="grid-productos">
+            
+            <div class="producto">
+                <a href="pollito.html" target="_blank">
+                    <img src="pollito1.jpeg" alt="Llaveros Pollitos">
+                </a>
+                <h3>Pollitos Disfrazados</h3>
+                <p class="precio">S/ 12.00</p>
+                <a href="pollito.html" target="_blank" class="btn-pedir">Elegir Modelo</a>
+            </div>
+
+            <div class="producto">
+                <a href="ositollavero.html" target="_blank">
+                    <img src="ositollavero1.jpg" alt="Llavero Osito">
+                </a>
+                <h3>Llavero Osito</h3>
+                <p class="precio">S/ 12.00</p>
+                <a href="ositollavero.html" target="_blank" class="btn-pedir">Ver detalles</a>
+            </div>
+
+            <div class="producto">
+                <a href="llaverochanchito.html" target="_blank">
+                    <img src="llaverochanchito1.jpg" alt="Llavero Chanchito">
+                </a>
+                <h3>Llavero Chanchito</h3>
+                <p class="precio">S/ 12.00</p>
+                <a href="llaverochanchito.html" target="_blank" class="btn-pedir">Ver detalles</a>
+            </div>
+
+            <div class="producto">
+                <a href="llaveroconejito.html" target="_blank">
+                    <img src="llaveroconejito1.jpg" alt="Llavero Conejito">
+                </a>
+                <h3>Llavero Conejito</h3>
+                <p class="precio">S/ 12.00</p>
+                <a href="llaveroconejito.html" target="_blank" class="btn-pedir">Ver detalles</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="ropa" class="seccion">
+        <h2 class="titulo-seccion">Ropa Tejida</h2>
+        <div class="grid-productos">
+            <div class="producto">
+                <img src="ropa1.jpeg" alt="Top Crochet">
+                <h3>Top de Verano</h3>
+                <p class="precio">S/ 35.00</p>
+                <a href="https://api.whatsapp.com/send?phone=51962318592&text=Hola,%20me%20interesa%20la%20ropa" class="btn-pedir">Pedir por WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 AAA Tejidos. Hecho a mano con amor.</p>
+    </footer>
+
+</body>
+</html>

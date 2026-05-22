@@ -1,408 +1,236 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAA Tejidos | Amor en cada punto</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primario: #d4a373;
+            --secundario: #faedcd;
+            --texto-oscuro: #333333;
+            --texto-claro: #666666;
+            --fondo: #fefae0;
+            --blanco: #ffffff;
+            --estrellas: #ffb703;
+        }
 
-<title>AAA Tejidos</title>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--fondo);
+            color: var(--texto-oscuro);
+            line-height: 1.6;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+        header {
+            background-color: var(--blanco);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primario);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        nav { display: flex; gap: 20px; }
+        nav a {
+            text-decoration: none;
+            color: var(--texto-oscuro);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--primario); }
 
-<style>
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 5%;
+            background: linear-gradient(to right, var(--secundario), var(--fondo));
+        }
+        .hero-text { flex: 1; max-width: 600px; }
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin-bottom: 20px; line-height: 1.2; }
+        .hero-text p { font-size: 1.1rem; color: var(--texto-claro); margin-bottom: 30px; }
+        .btn-comprar {
+            background-color: var(--primario);
+            color: var(--blanco);
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(212, 163, 115, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .btn-comprar:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(212, 163, 115, 0.6); }
 
-:root{
---bg:#f7f3ee;
---primary:#c97b63;
---text:#4a3b34;
---shadow:0 10px 30px rgba(0,0,0,0.08);
-}
+        .seccion { padding: 80px 5%; }
+        .titulo-seccion { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 50px; }
+        
+        .grid-productos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .tarjeta-producto {
+            background: var(--blanco);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            text-align: center;
+            padding-bottom: 25px;
+        }
+        .tarjeta-producto:hover { transform: translateY(-10px); }
+        .img-container { width: 100%; height: 280px; overflow: hidden; }
+        .img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .tarjeta-producto:hover .img-container img { transform: scale(1.08); }
+        .tarjeta-producto h3 { margin: 20px 0 10px; font-size: 1.2rem; padding: 0 10px; }
+        .precio { color: var(--primario); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; }
+        .tarjeta-producto a.btn-linea {
+            display: inline-block; padding: 10px 25px; border: 2px solid var(--primario);
+            color: var(--primario); border-radius: 25px; text-decoration: none; font-weight: 600;
+            transition: all 0.3s;
+        }
+        .tarjeta-producto a.btn-linea:hover { background: var(--primario); color: var(--blanco); }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+        .seccion-reviews {
+            background-color: var(--blanco);
+            padding: 80px 5%;
+        }
+        .grid-reviews {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .tarjeta-review {
+            background: var(--fondo);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+        .estrellas { color: var(--estrellas); font-size: 1.2rem; margin-bottom: 15px; }
+        .texto-review { font-style: italic; color: var(--texto-claro); margin-bottom: 20px; }
+        .cliente { font-weight: 700; color: var(--texto-oscuro); }
+        .compra-verificada { font-size: 0.8rem; color: #4caf50; font-weight: 600; margin-top: 5px; }
 
-body{
-font-family:'Poppins',sans-serif;
-background:var(--bg);
-color:var(--text);
-line-height:1.6;
-}
-
-header{
-background:white;
-padding:20px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
-z-index:999;
-box-shadow:0 2px 10px rgba(0,0,0,0.05);
-}
-
-.logo{
-font-family:'Playfair Display',serif;
-font-size:2rem;
-font-weight:700;
-color:var(--primary);
-}
-
-nav{
-display:flex;
-gap:25px;
-}
-
-nav a{
-text-decoration:none;
-color:var(--text);
-font-weight:500;
-}
-
-.hero{
-min-height:90vh;
-display:grid;
-grid-template-columns:1fr 1fr;
-align-items:center;
-padding:60px 8%;
-gap:50px;
-}
-
-.hero-text h1{
-font-family:'Playfair Display',serif;
-font-size:4rem;
-line-height:1.1;
-margin-bottom:20px;
-}
-
-.hero-text p{
-font-size:1.1rem;
-margin-bottom:30px;
-color:#666;
-}
-
-.btns{
-display:flex;
-gap:15px;
-}
-
-.btn{
-padding:14px 28px;
-border-radius:50px;
-text-decoration:none;
-font-weight:600;
-}
-
-.btn-primary{
-background:var(--primary);
-color:white;
-}
-
-.btn-secondary{
-border:2px solid var(--primary);
-color:var(--primary);
-}
-
-.hero img{
-width:100%;
-border-radius:30px;
-box-shadow:var(--shadow);
-}
-
-.section{
-padding:90px 8%;
-}
-
-.section-title{
-text-align:center;
-font-family:'Playfair Display',serif;
-font-size:2.5rem;
-margin-bottom:50px;
-}
-
-.products{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:30px;
-}
-
-.card{
-background:white;
-border-radius:25px;
-overflow:hidden;
-box-shadow:var(--shadow);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-}
-
-.card img{
-width:100%;
-height:280px;
-object-fit:cover;
-}
-
-.card-content{
-padding:20px;
-}
-
-.price{
-color:var(--primary);
-font-weight:700;
-margin:15px 0;
-}
-
-.card-content a{
-display:inline-block;
-background:var(--primary);
-color:white;
-text-decoration:none;
-padding:10px 18px;
-border-radius:30px;
-}
-
-.about{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:50px;
-align-items:center;
-}
-
-.about img{
-width:100%;
-border-radius:30px;
-box-shadow:var(--shadow);
-}
-
-.about-text h2{
-font-family:'Playfair Display',serif;
-font-size:3rem;
-margin-bottom:20px;
-}
-
-footer{
-background:#2d2420;
-color:white;
-padding:60px 8%;
-text-align:center;
-}
-
-.whatsapp{
-position:fixed;
-bottom:20px;
-right:20px;
-width:65px;
-height:65px;
-background:#25d366;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:2rem;
-text-decoration:none;
-color:white;
-box-shadow:var(--shadow);
-}
-
-@media(max-width:900px){
-
-.hero,
-.about{
-grid-template-columns:1fr;
-}
-
-.hero-text h1{
-font-size:3rem;
-}
-
-header{
-flex-direction:column;
-gap:20px;
-}
-
-nav{
-flex-wrap:wrap;
-justify-content:center;
-}
-
-}
-
-</style>
-
+        footer { background-color: var(--texto-oscuro); color: var(--blanco); text-align: center; padding: 40px 5%; }
+        
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 5%; }
+            .hero-text h1 { font-size: 2.5rem; }
+            nav { display: none; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
+    <header>
+        <a href="#" class="logo">AAA Tejidos</a>
+        <nav>
+            <a href="#productos">Tienda</a>
+            <a href="#reviews">Opiniones</a>
+        </nav>
+    </header>
 
-<div class="logo">
-AAA Tejidos
-</div>
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Tejidos con el corazón</h1>
+            <p>Descubre nuestra colección de amigurumis, llaveros y accesorios tejidos 100% a mano. El regalo perfecto y único que estabas buscando.</p>
+            <a href="#productos" class="btn-comprar">Ver Catálogo</a>
+        </div>
+    </section>
 
-<nav>
-<a href="#productos">Productos</a>
-<a href="#contacto">Contacto</a>
-</nav>
+    <section id="productos" class="seccion">
+        <h2 class="titulo-seccion">Nuestros Favoritos</h2>
+        <div class="grid-productos">
+            
+            <div class="tarjeta-producto">
+                <div class="img-container"><img src="foto1.jpeg" alt="Osito"></div>
+                <h3>Osito Clásico</h3>
+                <div class="precio">S/ 85.00</div>
+                <a href="osito.html" class="btn-linea">Ver detalles</a>
+            </div>
 
-</header>
+            <div class="tarjeta-producto">
+                <div class="img-container"><img src="jirafa1.jpg" alt="Jirafa"></div>
+                <h3>Jirafa Amigurumi</h3>
+                <div class="precio">S/ 12.00</div>
+                <a href="jirafa.html" class="btn-linea">Ver detalles</a>
+            </div>
 
-<section class="hero">
+            <div class="tarjeta-producto">
+                <div class="img-container"><img src="pollito1.jpeg" alt="Pollito"></div>
+                <h3>Pollito Disfrazado</h3>
+                <div class="precio">S/ 12.00</div>
+                <a href="pollito.html" class="btn-linea">Ver detalles</a>
+            </div>
 
-<div class="hero-text">
+            <div class="tarjeta-producto">
+                <div class="img-container"><img src="chanchito1.jpg" alt="Chanchito"></div>
+                <h3>Llavero Chanchito</h3>
+                <div class="precio">S/ 12.00</div>
+                <a href="chanchito.html" class="btn-linea">Ver detalles</a>
+            </div>
 
-<h1>
-Entre hilos,<br>
-colores y creatividad
-</h1>
+        </div>
+    </section>
 
-<p>
-Tejidos hechos a mano con amor, delicadeza y creatividad.
-</p>
+    <section id="reviews" class="seccion-reviews">
+        <h2 class="titulo-seccion">Lo que dicen nuestros clientes</h2>
+        <div class="grid-reviews">
+            
+            <div class="tarjeta-review">
+                <div class="estrellas">★★★★★</div>
+                <p class="texto-review">"Compré el osito para el baby shower de mi sobrina y quedó hermoso. Se nota la calidad del hilo y los acabados perfectos. 100% recomendado."</p>
+                <div class="cliente">
+                    Valeria M.
+                    <div class="compra-verificada">✔ Compra verificada</div>
+                </div>
+            </div>
 
-<div class="btns">
+            <div class="tarjeta-review">
+                <div class="estrellas">★★★★★</div>
+                <p class="texto-review">"Los llaveros de pollitos y chanchitos son una ternura total. Pedí para mis amigas y llegaron súper rápido. La atención por WhatsApp fue excelente."</p>
+                <div class="cliente">
+                    Sofía R.
+                    <div class="compra-verificada">✔ Compra verificada</div>
+                </div>
+            </div>
 
-<a href="#productos" class="btn btn-primary">
-Ver productos
-</a>
+            <div class="tarjeta-review">
+                <div class="estrellas">★★★★★</div>
+                <p class="texto-review">"El trabajo es impecable, los colores vivos y muy bien ajustados. Ya estoy pensando en armar mi siguiente pedido."</p>
+                <div class="cliente">
+                    Camila T.
+                    <div class="compra-verificada">✔ Compra verificada</div>
+                </div>
+            </div>
 
-<a href="https://api.whatsapp.com/send?phone=51962318592"
-class="btn btn-secondary">
-WhatsApp
-</a>
+        </div>
+    </section>
 
-</div>
-
-</div>
-
-<div>
-<img src="foto1.jpeg">
-</div>
-
-</section>
-
-<section class="section" id="productos">
-
-<h2 class="section-title">
-Productos destacados
-</h2>
-
-<div class="products">
-
-<div class="card">
-
-<img src="foto1.jpeg">
-
-<div class="card-content">
-
-<h3>Osito Clásico</h3>
-
-<div class="price">
-S/ 85.00
-</div>
-
-<a href="Osito.html">
-Ver producto
-</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="pollito1.jpeg">
-
-<div class="card-content">
-
-<h3>Pollito Crochet</h3>
-
-<div class="price">
-S/ 12.00
-</div>
-
-<a href="pollito.html">
-Ver producto
-</a>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<img src="llaveroconejito1.jpg">
-
-<div class="card-content">
-
-<h3>Conejito Tejido</h3>
-
-<div class="price">
-S/ 12.00
-</div>
-
-<a href="llaveroconejito.html">
-Ver producto
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="section">
-
-<div class="about">
-
-<div>
-<img src="foto2.jpeg">
-</div>
-
-<div class="about-text">
-
-<h2>
-Tejer es crear historias
-</h2>
-
-<p>
-AAA Tejidos nace del amor por lo hecho a mano.
-Cada pieza está creada con dedicación y cariño para transmitir ternura y creatividad.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<footer id="contacto">
-
-<h2>AAA Tejidos</h2>
-
-<p>
-Hecho a mano con amor
-</p>
-
-<p>
-WhatsApp: +51 962 318 592
-</p>
-
-</footer>
-
-<a class="whatsapp"
-href="https://api.whatsapp.com/send?phone=51962318592">
-💬
-</a>
+    <footer>
+        <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 10px;">AAA Tejidos</h2>
+        <p>WhatsApp: +51 962 318 592</p>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">&copy; 2026 AAA Tejidos. Todos los derechos reservados.</p>
+    </footer>
 
 </body>
 </html>
